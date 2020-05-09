@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<view class="content">
+  <!-- <mp-loading type="circle"></mp-loading> -->
+  <view class="search-box {{searchClass}}">
+    <mp-sticky bindscroll="stickyScroll">
+      <mp-searchbar ext-class="search" bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    </mp-sticky>
+  </view>
+  <view class="container">
+    <swiper indicator-dots="true" autoplay="true" interval="2000" circular="true">
+      <block wx:for="{{swiperData}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-items {{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <mp-tabs 
+      tabs="{{tabs}}" 
+      activeTab="{{activeTab}}" 
+      swiperClass="weui-tabs-swiper"
+      bindtabclick="onTabCLick"
+      bindchange="onChange"
+      activeClass="tab-bar-title__selected"
+      swiperStyle="height: {{tabSwiperHeight}}px"
+    >
+      <block wx:for="{{tabs}}" wx:for-item="tab" wx:for-index="index" wx:key="index">
+        <view class="tab-content tab-content-{{index}}" slot="tab-content-{{index}}" >
+          <view class="list-item" wx:for="{{tab.list}}" wx:for-item="item" wx:for-index="idx" wx:key="idx">
+            <image class="img" src="//pic1.58cdn.com.cn/gongyu/n_v2c72c4c6ad468406d8c967d4405de9ca0_521abd8af2d0bbe0.jpg?w=240"></image>
+            <text class="title"> {{tab.title}} </text>
+          </view>
+        </view>
+      </block>
+    </mp-tabs>
+    <!-- 用户 openid -->
+    <view class="userinfo">
+      <button 
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        class="userinfo-avatar"
+        style="background-image: url({{avatarUrl}})"
+        size="default"
+      ></button>
+      <view class="userinfo-nickname-wrapper">
+        <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+      </view>
+    </view>
+
+
+    <!-- 上传图片 -->
+    <view class="uploader" style="margin: 50px 0;">
+      <view class="uploader-text" bindtap="doUpload">
+        <text>上传图片</text>
+      </view>
+      <view class="uploader-container" wx:if="{{imgUrl}}">
+        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      </view>
+    </view>
+
+
+    <!-- 操作数据库 -->
+    <view class="uploader">
+      <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
+        <text>前端操作数据库</text>
+      </navigator>
+    </view>
+
+    <!-- 即时通信 -->
+    <view class="uploader">
+      <navigator url="../im/im" open-type="navigate" class="uploader-text">
+        <text>即时通信 Demo</text>
+      </navigator>
+    </view>
+
+    <!-- 新建云函数 -->
+    <view class="uploader">
+      <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
+        <text>快速新建云函数</text>
+      </navigator>
+    </view>
+
+    <!-- 云调用 -->
+    <view class="uploader">
+      <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
+        <text>云调用</text>
+      </navigator>
+    </view>
+
+
+  </view>
+</view>

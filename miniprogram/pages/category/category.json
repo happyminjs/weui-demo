@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-loading": "/weui-miniprogram/loading/loading",
+    "mp-vtabs": "/miniprogram_npm/@miniprogram-component-plus/vtabs/index",
+    "mp-vtabs-content": "/miniprogram_npm/@miniprogram-component-plus/vtabs-content/index"
+  }
+}

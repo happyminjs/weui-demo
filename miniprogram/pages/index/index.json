@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mp-sticky": "@miniprogram-component-plus/sticky",
+    "mp-loading": "/weui-miniprogram/loading/loading",
+    "mp-searchbar": "/weui-miniprogram/searchbar/searchbar",
+    "mp-tabs": "@miniprogram-component-plus/tabs"
+  }
+}
